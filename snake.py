@@ -1,9 +1,12 @@
 import pygame
 import random
 
+pygame.init()
+
 blue = (50, 100, 213)
 red = (216, 31, 42)
 black = (0, 0, 0)
+yellow = (255,255,102)
 dimensions = (600,600)
 
 #=================================
@@ -20,6 +23,8 @@ delta_y = 0
 
 x_food = round(random.randrange(0, 600 - d) / 20) * 20
 y_food = round(random.randrange(0, 600 - d) / 20) * 20 
+
+font = pygame.font.SysFont("hack", 30)
 
 #=================================
 
@@ -80,9 +85,45 @@ def verify_food(delta_x, delta_y, x_food, y_food, snake_list):
 
         snake_list.append([new_x, new_y])
 
+        x_food = round(random.randrange(0, 600 - d) / 20) * 20
+        y_food = round(random.randrange(0, 600 - d) / 20) * 20
+
     pygame.draw.rect(screen, black, [x_food, y_food, d, d])
 
     return x_food, y_food, snake_list
+
+def verify_wall(snake_list):
+    
+    head = snake_list[-1]
+
+    x = head[0]
+    y = head[1]
+
+    if x not in range(600) or y not in range(600):
+        
+        raise Exception
+
+def verify_body_touch(snake_list):
+
+    head = snake_list[-1]
+    body = snake_list.copy()
+
+    del body[-1]
+
+    for x,y in body:
+
+        if x == head[0] and y == head[1]:
+            raise Exception
+
+
+def point_counter(snake_list):
+
+    points = str(len(snake_list))    
+
+    score = font.render("Points:" + points, True, yellow)
+    screen.blit(score,[0, 0])
+    
+
 
 while True:
 
@@ -93,5 +134,11 @@ while True:
     delta_x, delta_y, snake_list = move_snake(delta_x, delta_y, snake_list) 
 
     x_food, y_food, snake_list = verify_food(delta_x, delta_y, x_food, y_food, snake_list)
+
+    print(snake_list)
+
+    verify_wall(snake_list)
+    verify_body_touch(snake_list)
+    point_counter(snake_list)
 
     clock.tick(10)
