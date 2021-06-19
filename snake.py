@@ -7,7 +7,7 @@ blue = (50, 100, 213)
 red = (216, 31, 42)
 black = (0, 0, 0)
 yellow = (255,255,102)
-dimensions = (600,600)
+dimensions = (830,700)
 
 #=================================
 #Initial values
@@ -141,4 +141,4 @@ while True:
     verify_body_touch(snake_list)
     point_counter(snake_list)
 
-    clock.tick(10)
+    clock.tick(5)
