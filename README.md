@@ -17,5 +17,3 @@ This project was created in order to practice my skills with Python.
 ## Author
 
 - [David Nunes](https://www.github.com/Dnuns)
-
-
