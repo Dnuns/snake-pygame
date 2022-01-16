@@ -12,7 +12,7 @@ This project was created in order to practice my skills with Python.
 <img alt="Python" width="28px" src="https://cdn-icons-png.flaticon.com/512/1822/1822899.png" />
 
 #### Desktop view
-![game desktop screenshot](project-img.jpeg)
+![game desktop screenshot](project-img.jpg)
   
 ## Author
 
